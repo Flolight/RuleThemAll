@@ -1,0 +1,22 @@
+version: "3"
+services:
+    frontend:
+        container_name: rulethemall-frontend
+        build:
+            context: ./client
+            dockerfile: Dockerfile
+        image: flolight/rulethemall-frontend
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./client:/usr/src/app
+    backend:
+        container_name: rulethemall-backend
+        build:
+            context: ./server
+            dockerfile: Dockerfile
+        image: flolight/rulethemall-backend
+        ports:
+            - "5000:5000"
+        volumes:
+            - ./server:/usr/src/app
