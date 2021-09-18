@@ -5,6 +5,7 @@
  import express from "express";
  import cors from "cors";
  import helmet from "helmet";
+ import { profilesRouter } from "./profiles/profiles.router";
  
  dotenv.config();
 
@@ -25,6 +26,7 @@ const app = express();
  app.use(helmet());
  app.use(cors());
  app.use(express.json());
+ app.use("/api/menu/profiles", profilesRouter);
 
 /**
  * Server Activation
@@ -32,4 +34,4 @@ const app = express();
 
  app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
-  });
+  });   
