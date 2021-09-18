@@ -18,7 +18,15 @@ function App() {
         icon: "twitter"
       }
     ]
-  }
+  };
+  const [hello, setHello] = React.useState(null);
+
+  React.useEffect(() => {
+    fetch("/api")
+      .then((res) => res.json())
+      .then((data) => setHello(data.message));
+  }, []);
+  
   return (
     <div className="p-m-4">
       <div className="p-d-flex p-jc-center p-ai-center">
@@ -34,6 +42,7 @@ function App() {
       </div>
       <div className="p-d-flex p-jc-center p-ai-center">
         <Button>Change picture</Button>
+        <p>{!data ? "Loading..." : data}</p>
       </div>
     </div>
   );
