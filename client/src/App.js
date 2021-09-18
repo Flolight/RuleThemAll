@@ -1,3 +1,5 @@
+import React from 'react';
+
 import 'primereact/resources/themes/saga-blue/theme.css'
 import 'primereact/resources/primereact.min.css'
 import 'primeicons/primeicons.css'
@@ -42,8 +44,8 @@ function App() {
       </div>
       <div className="p-d-flex p-jc-center p-ai-center">
         <Button>Change picture</Button>
-        <p>{!data ? "Loading..." : data}</p>
       </div>
+      <p>{!hello ? "Loading..." : hello}</p>
     </div>
   );
 }
