@@ -7,6 +7,7 @@ import 'primeflex/primeflex.css'
 
 import { Avatar } from 'primereact/avatar'
 import { Button } from 'primereact/button'
+import TwitterButton from './TwitterButton';
 
 function App() {
   const data = {
@@ -46,6 +47,7 @@ function App() {
         <Button>Change picture</Button>
       </div>
       <p>{!hello ? "Loading..." : hello}</p>
+      <TwitterButton></TwitterButton>
     </div>
   );
 }
