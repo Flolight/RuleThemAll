@@ -7,8 +7,9 @@ class TwitterButton extends Component{
     constructor(props){
         super(props);
         this.state = {
-          requestToken: null
-        }
+          requestToken: null,
+          profile: null
+        };
         const queryParams = new URLSearchParams(window.location.search);
         
         const oauth_token = queryParams.get('oauth_token');
@@ -47,7 +48,13 @@ class TwitterButton extends Component{
       fetch('/twitter/callback', requestOptions).then(res => res.json())
         .then((results) => {
           console.log(results)
-          //window.location.href = 'localhost:3000';
+          fetch('api/user').then((res) => res.json())
+            .then((data) => {
+              this.setState({profile: data.user}) ;
+              console.log(data)
+              console.log(this.state.profile)
+            });
+          // window.location.href = 'http://localhost:3000';
           // http://127.0.0.1:3000/
         });
       
@@ -60,6 +67,7 @@ class TwitterButton extends Component{
                 <div className="p-d-flex p-jc-center p-ai-center">
                     <Button onClick={this.handleClick.bind(this)}>Connect to Twitter</Button>
                 </div>
+                <p>User: {!this.state.profile ? "Loading Profile...": this.state.profile}</p>
             </div>
         );
     }

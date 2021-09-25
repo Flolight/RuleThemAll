@@ -125,21 +125,24 @@ async function main(){
     req.session.twitter_screen_name = user.screen_name;
     res.cookie('twitter_screen_name', user.screen_name, { maxAge: 900000, httpOnly: true });
     console.log('user succesfully logged in with twitter', user.screen_name)
+    req.session.user = user.screen_name;
     req.session.save()
     res.json({ user: user.screen_name });
   });
-
-  app.get("/api", (req, res) => {
-    res.json({ message: "Hello from API server!" });
-  });
-
+  
   app.get("/api/twitter/auth", (req, res) => {
     res.json({ message: "Let's try to authenticate using Twitter" });
   });
   app.get('/api/session', (req, res) => {
     res.json(req.session)
   });
+  app.get('/api/user', (req, res) => {
+    res.json({user: !req.session.user? 'user not authenticated' : req.session.user});
+  })
   
+  app.get("/api", (req, res) => {
+    res.json({ message: "Hello from API server!" });
+  });
   app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
   });
