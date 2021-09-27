@@ -1,18 +1,33 @@
 import React, { Component } from "react";
+import "./../index.css"
+
+import ConvertKitForm from 'convertkit-react'
 
 
 class Landing extends Component{
 
+    
     render(){
         return (
-            <div>
-                <div className="p-my-6 p-text-center p-text-bold">
-                    <div className="p-my-6"> 
-                        <h2>Manage all your social media profiles from one place</h2>
+            <div className="h-screen flex flex-col landing-img bg-cover bg-center">
+                <div className="p-my-6 p-text-center font-bold">
+                    <div className="my-2 "> 
+                        <h2 className="text-3xl text-b-black">Manage all your social media profiles from one place</h2>
                     </div>
-                    <div className="p-py-6">
-                        <h3>The Open Source Alternative</h3>
+                    <div className="container mx-auto flex justify-center">
+                        <ConvertKitForm formId="2633804" 
+                
+                            className="ck-form" 
+                            buttonBackground="#F9C22E"
+                            buttonColor="#171614"
+                            hideName="true"
+                            />
                     </div>
+                    <div className="p-py-2 container mx-auto flex justify-center">
+                        
+                        
+                    </div>
+                    
                 </div>
             </div>
         );

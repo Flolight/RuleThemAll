@@ -10,15 +10,15 @@ class Header extends Component{
                     <nav className="container flex items-center justify-between py-2">
                         <div className="container flex items-center justify-start">
                             <div className="m-4">
-                            <img src={logo} className="h-10"/>
+                            <img src={logo} className="h-10" alt="logo"/>
                             </div>
                             <div className="m-2">
-                            <h1 className="text-2xl">Rule Them All</h1>
+                                <h1 className="text-2xl">Rule Them All</h1>
                             </div>
                             
                         </div>
                         <div className="">
-                            <button className="rounded-3xl w-40 h-12 bg-b-yellow">
+                            <button type="button" className="rounded-3xl w-40 h-12 bg-b-yellow hover:bg-b-black hover:text-b-white">
                                 Get started !
                             </button>
                         </div>

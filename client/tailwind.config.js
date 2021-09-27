@@ -9,14 +9,17 @@ module.exports = {
         "b-aqua": "#5DFDCB",
         "b-blue": "#7CC6FE",
         "b-white": "#F4FAFF",
-      }
+      },
+      
     },
     fontFamily: {
       Poppins: ["Poppins, sans-serif"],
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      animation: ['hover', 'focus'],
+    },
   },
   plugins: [],
 }

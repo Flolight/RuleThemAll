@@ -17,3 +17,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+button {
+  @apply rounded-3xl w-28 h-10 m-4 bg-b-yellow hover:bg-b-black hover:text-b-white
+}
+
+input[type=email] {
+  @apply bg-b-white w-64 border-b-2 py-2 px-6 border-b-yellow rounded-3xl
+}
+
+.landing-img {
+  background-image: url("./img/img2.png");
+}
