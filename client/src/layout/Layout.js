@@ -2,17 +2,18 @@ import { React } from "react";
 
 import MenuBar from "../components/MenuBar";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 
 const Layout = (props) => {
     return (
-        <div className="font-Poppins">
+        <div className="flex flex-col font-Poppins min-h-screen">
             <Header />
-            <MenuBar />
-            <main className="main-content">
+            {/* <MenuBar /> */}
+            <main className="flex flex-grow">
                 {props.children}
             </main>
-            {/* <Footer /> */}
+            <Footer />
         </div>
     );
 };
