@@ -1,8 +1,38 @@
-# Getting Started with RuleThemAll app
+# Rule Them All
+
+[![open issues](https://img.shields.io/github/issues-raw/Flolight/RuleThemAll)](https://img.shields.io/github/issues-raw/Flolight/RuleThemAll)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+> This project is providing an open source tool to manage all your social media profiles from one place.
+
+A first live version is available [here](https://flolight.github.io/RuleThemAll/).
+<hr>
+
+![overview](./docs/resources/overview.png)
+
+## Quick start
+
+1. Fork the project
+2. Clone the project
+### Frontend
+
+3. Navigate to the project directory `cd RuleThemAll/client`
+4. Install dependencies with `npm install`
+5. Run `npm start`
+
+### Backend
+
+6. cd `RuleThemAll/server`
+7. Run `node index.js`
+
+
+
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Using Docker Compose to runn both frontend and backend
+## Using Docker Compose to run both frontend and backend
 
 1. Launch `docker-compose up`
 
