@@ -1,0 +1,27 @@
+{
+  "name": "rulethemall",
+  "version": "1.0.0",
+  "description": "Open source tool to manage all your social media profiles from one place",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Flolight/RuleThemAll.git"
+  },
+  "keywords": [
+    "react",
+    "social-network",
+    "open-source"
+  ],
+  "author": "Flolight",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Flolight/RuleThemAll/issues"
+  },
+  "homepage": "https://github.com/Flolight/RuleThemAll#readme"
+}
