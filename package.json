@@ -1,6 +1,6 @@
 {
   "name": "rulethemall",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Open source tool to manage all your social media profiles from one place",
   "main": "index.js",
   "directories": {
