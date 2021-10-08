@@ -13,7 +13,6 @@ const dotenv = require('dotenv');
 dotenv.config();
 const PORT = process.env.PORT || 5000;
 
-console.log(process.env.TWITTER_CONSUMER_API_KEY)
 const COOKIE_SECRET = process.env.npm_config_cookie_secret || process.env.COOKIE_SECRET;
 const TWITTER_CONSUMER_API_KEY = process.env.npm_config_twitter_consumer_api_key || process.env.TWITTER_CONSUMER_API_KEY;
 const TWITTER_CONSUMER_API_SECRET_KEY = process.env.npm_config_twitter_consumer_api_secret_key || process.env.TWITTER_CONSUMER_API_SECRET_KEY;
@@ -26,7 +25,7 @@ const oauthConsumer = new oauth.OAuth(
                                 TWITTER_CONSUMER_API_KEY,
                                 TWITTER_CONSUMER_API_SECRET_KEY,
                                 '1.0A',
-                                'http://localhost:3000',
+                                `http://localhost:${PORT}`,
                                 'HMAC-SHA1'
                               );
 
@@ -38,19 +37,6 @@ async function main(){
   app.use(cookieParser())
   app.use(session({ secret: COOKIE_SECRET || 'secret' }));
   app.use(express.json());
-
-  app.get('/', async (req, res, next) => {
-    console.log('/ req.cookies', req.cookies)
-    if (req.cookies && req.cookies.twitter_screen_name) {
-      console.log('/ authorized', req.cookies.twitter_screen_name)
-      return res.send(`
-        <h1>Hello ${req.cookies.twitter_screen_name}</h1>
-        <br>
-        <a href=“/twitter/logout”>logout</a>
-      `)
-    }
-    return next();
-  });
 
   app.get('/twitter/authenticate', twitter('authenticate'));
   app.get('/twitter/authorize', twitter('authorize'));
@@ -130,9 +116,6 @@ async function main(){
     res.json({ user: user.screen_name });
   });
   
-  app.get("/api/twitter/auth", (req, res) => {
-    res.json({ message: "Let's try to authenticate using Twitter" });
-  });
   app.get('/api/session', (req, res) => {
     res.json(req.session)
   });
@@ -143,6 +126,19 @@ async function main(){
   app.get("/api", (req, res) => {
     res.json({ message: "Hello from API server!" });
   });
+
+  app.get("/test", (req, res) => {
+    res.json({ message: `${__dirname}` });
+  });
+  // if(process.env.NODE_ENV === 'production') {
+    // set static folder
+  const buildPath = path.join(__dirname, 'client', 'build');
+  app.use(express.static(buildPath));
+  app.get('*', (req, res) => {
+    console.log(__dirname);
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+  // }
   app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
   });

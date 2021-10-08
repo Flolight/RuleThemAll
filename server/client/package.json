@@ -2,7 +2,6 @@
   "name": "rulethemall",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://flolight.github.io/RuleThemAll",
   "dependencies": {
     "@craco/craco": "^6.3.0",
     "@heroicons/react": "^1.0.4",
@@ -46,7 +45,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000",
   "devDependencies": {
     "autoprefixer": "^9.8.6",
     "gh-pages": "^3.2.3",

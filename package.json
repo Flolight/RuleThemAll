@@ -7,7 +7,9 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/index.js",
+    "heroku-postbuild": "npm install --prefix server && cd server && npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
@@ -18,10 +20,20 @@
     "social-network",
     "open-source"
   ],
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "oauth": "^0.9.15"
+},
   "author": "Flolight",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Flolight/RuleThemAll/issues"
   },
-  "homepage": "https://github.com/Flolight/RuleThemAll#readme"
+  "homepage": "https://github.com/Flolight/RuleThemAll#readme",
+  "engines": {
+    "node": "^16.9"
+  }
 }
