@@ -1,6 +1,7 @@
 import { Button } from 'primereact/button'
 import { React, Component } from 'react';
-
+import { connect } from 'react-redux'
+import { login } from "../features/user/user";
 
 class LoginContainer extends Component{
 
@@ -10,14 +11,20 @@ class LoginContainer extends Component{
           requestToken: null,
           profile: null
         };
-        const queryParams = new URLSearchParams(window.location.search);
+        
+    }
+    componentDidMount(){
+      const queryParams = new URLSearchParams(window.location.search);
         
         const oauth_token = queryParams.get('oauth_token');
         const oauth_verifier = queryParams.get('oauth_verifier');
+
         if(oauth_token && oauth_verifier){
           console.log('query: ' + queryParams.toString())
           this.requestAccessToken(oauth_token, oauth_verifier);
         }
+
+        this.requestAccessToken = this.requestAccessToken.bind(this);
     }
     
     handleClick() {
@@ -40,6 +47,7 @@ class LoginContainer extends Component{
     };
 
     requestAccessToken(oauth_token, oauth_verifier){
+      const { dispatch } = this.props;
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -51,8 +59,9 @@ class LoginContainer extends Component{
           fetch('api/user').then((res) => res.json())
             .then((data) => {
               this.setState({profile: data.user}) ;
-              console.log(data)
-              console.log(this.state.profile)
+              dispatch(login({name: data.user}));
+              console.log(`data: ${data}`)
+              console.log(`profile: ${this.state.profile}`)
             });
           // window.location.href = 'http://localhost:3000';
           // http://127.0.0.1:3000/
@@ -73,4 +82,6 @@ class LoginContainer extends Component{
     }
 };
 
-export default LoginContainer;
+export default connect()(LoginContainer)
+
+// export default LoginContainer;

@@ -18,15 +18,26 @@ import LoginContainer from './components/LoginContainer'
 import Landing from './components/Landing';
 import Home from './components/Home';
 
+
+import { useSelector, useDispatch } from 'react-redux'
+
+function User(){
+  const user = useSelector(state => state.user);
+  return <>{user.isAuthenticated?'yes':'no'}</>
+
+}
 class App extends React.Component {
   
   render(){
+    
+
     this.state = {
       isUserAuthenticated: false
     }
 
     return (
       <div>
+        <User/>
         <Router>
           <Layout>
             <Switch>
