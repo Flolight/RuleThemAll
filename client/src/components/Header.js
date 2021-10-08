@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+
 import logo from "./../img/logo.png"
+import NavButton from "./NavButton";
 
 class Header extends Component{
 
@@ -17,12 +19,9 @@ class Header extends Component{
                             </div>
                             
                         </div>
-                        <div className="">
-                            <button type="button" className="rounded-3xl w-40 h-12 bg-b-yellow hover:bg-b-black hover:text-b-white">
-                                Get started !
-                            </button>
+                        <div>
+                            <NavButton />
                         </div>
-                        
                     </nav>   
                 </header>
                 

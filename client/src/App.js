@@ -2,7 +2,8 @@ import React from 'react';
 import {
   BrowserRouter as Router, 
   Switch,
-  Route
+  Route,
+  Redirect
 } from 'react-router-dom'
 
 import 'primereact/resources/themes/saga-orange/theme.css'
@@ -13,24 +14,47 @@ import 'primeflex/primeflex.css'
 
 
 import Layout from './layout/Layout'
-import Home from './components/Home'
 import LoginContainer from './components/LoginContainer'
 import Landing from './components/Landing';
+import Home from './components/Home';
 
-function App(props) {
+class App extends React.Component {
   
-  return (
-    <div>
-      <Router>
-        <Layout>
-          <Switch>
-            <Route path={'/'} component={Landing}></Route>
-            <Route path="/login" render={()=> <LoginContainer user={this.props.user} />} />
-          </Switch>
-        </Layout>
-      </Router>
-    </div>
-  );
+  render(){
+    this.state = {
+      isUserAuthenticated: false
+    }
+
+    return (
+      <div>
+        <Router>
+          <Layout>
+            <Switch>
+              <Route exact path="/" render={() => {
+                  return (
+                    this.state.isUserAuthenticated ?
+                    <Redirect to="/home" /> :
+                    <Redirect to="/landing" /> 
+                  )
+                }}
+              >
+              </Route>
+              <Route path={'/landing'}>
+                <Landing />
+              </Route>
+              <Route path="/home">
+                <Home />
+              </Route>
+              <Route path="/login">
+                <LoginContainer />
+              </Route>
+            </Switch>
+          </Layout>
+        </Router>
+      </div>
+    );
+  }
+  
 }
 
 export default App;

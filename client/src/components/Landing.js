@@ -16,12 +16,11 @@ class Landing extends Component{
                     </div>
                     <div className="h-96"></div>
                     <div className="m-4 container mx-auto flex justify-center">
-                        <ConvertKitForm formId="2633804" 
-                
+                        <ConvertKitForm formId={2633804}
                             className="ck-form" 
                             buttonBackground="#F9C22E"
                             buttonColor="#171614"
-                            hideName="true"
+                            hideName={true}
                             />
                     </div>
                     
