@@ -25,7 +25,7 @@ const oauthConsumer = new oauth.OAuth(
                                 TWITTER_CONSUMER_API_KEY,
                                 TWITTER_CONSUMER_API_SECRET_KEY,
                                 '1.0A',
-                                `http://localhost:${PORT}`,
+                                `http://localhost:${PORT}/login`,
                                 'HMAC-SHA1'
                               );
 
